@@ -26,7 +26,6 @@ class GameViewModel: ViewModel() {
         true -> str
         false -> "_"
     }
-
     fun makeGuess(guess: String){
         if(guess.length ==1){
             if(secretWord.contains(guess)){
