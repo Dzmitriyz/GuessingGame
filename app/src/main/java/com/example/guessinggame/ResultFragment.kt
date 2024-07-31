@@ -25,8 +25,7 @@ class ResultFragment : Fragment() {
         viewModelFactory = ResultViewModelFactory(result)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ResultViewModel::class.java)
 
-
-        binding.wonList.text = viewModel.result
+        binding.resultViewModel = viewModel
 
         binding.newGameButton.setOnClickListener{
             view.findNavController().navigate(R.id.action_resultFragment_to_gameFragment)}
