@@ -41,7 +41,8 @@ android {
 
 dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

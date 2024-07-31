@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.guessinggame.databinding.FragmentGameBinding
+import androidx.lifecycle.Observer
 
 class GameFragment : Fragment() {
     lateinit var viewModel: GameViewModel
@@ -25,13 +26,17 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
 
-        updateScreen()
+        viewModel.incorrectGuesses.observe(viewLifecycleOwner, Observer { newValue ->
+            binding.lives.text = "You have $newValue lives left"
+        })
+        viewModel.secretWordDisplay.observe(viewLifecycleOwner, Observer {newValue ->
+            binding.word.text = newValue
+        })
 
         binding.guessButton.setOnClickListener() {
             viewModel.makeGuess(binding.guess.text.toString().uppercase())
             binding.guess.text = null
 
-            updateScreen()
             if (viewModel.isWon() || viewModel.isLost()) {
                 val action =
                     GameFragmentDirections.actionGameFragmentToResultFragment(viewModel.wonLostMessage())
@@ -46,9 +51,5 @@ class GameFragment : Fragment() {
         _binding = null
     }
 
-    fun updateScreen() {
-        binding.word.text = viewModel.secretWordDisplay
-        binding.lives.text = "You have ${viewModel.livesLeft} lives left"
-        binding.incorrectQuesses.text = "Incorrect guesses: ${viewModel.incorrectGuesses}"
-    }
+
 }
