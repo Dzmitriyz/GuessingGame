@@ -5,6 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.semantics.SemanticsProperties.Text
+import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.guessinggame.databinding.FragmentResultBinding
@@ -19,7 +26,15 @@ class ResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentResultBinding.inflate(inflater, container, false)
+        _binding = FragmentResultBinding.inflate(inflater, container, false).apply {
+            composeView.setContent {
+                MaterialTheme{
+                    Surface {
+                        ResultFragmentContent()
+                    }
+                }
+            }
+        }
         val view = binding.root
         val result = ResultFragmentArgs.fromBundle(requireArguments()).result
         viewModelFactory = ResultViewModelFactory(result)
@@ -36,5 +51,15 @@ class ResultFragment : Fragment() {
         _binding = null
     }
 
+    @Composable
+    fun NewGameButton(clicked: () -> Unit){
+        Button(onClick = clicked) {
+            Text("Start New Game")
+        }
+    }
 
+    @Composable
+    fun ResultFragmentContent(){
+
+    }
 }
