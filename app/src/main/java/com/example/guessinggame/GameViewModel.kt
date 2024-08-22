@@ -23,7 +23,8 @@ class GameViewModel: ViewModel() {
         get() = _gameOver
 
     init {
-        _secretWordDisplay.value = deriverSecretWordDisplay() }
+        _secretWordDisplay.value = deriverSecretWordDisplay()
+    }
 
     private fun deriverSecretWordDisplay(): String{
         var display = ""

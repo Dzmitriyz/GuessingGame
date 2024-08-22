@@ -51,7 +51,8 @@
         android:textSize="16sp"
         android:hint="Guess a letter"
         android:inputType="text"
-        android:maxLength="1" />
+        android:maxLength="1"
+        />
     <Button
         android:id="@+id/guess_button"
         android:layout_width="wrap_content"
