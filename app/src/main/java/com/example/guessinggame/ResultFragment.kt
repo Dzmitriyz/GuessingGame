@@ -24,7 +24,6 @@ class ResultFragment : Fragment() {
         val result = ResultFragmentArgs.fromBundle(requireArguments()).result
         viewModelFactory = ResultViewModelFactory(result)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ResultViewModel::class.java)
-
         binding.resultViewModel = viewModel
 
         binding.newGameButton.setOnClickListener{
