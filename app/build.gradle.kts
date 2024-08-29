@@ -53,7 +53,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
     implementation("androidx.compose.ui:ui:$compose_version")
     implementation("androidx.compose.ui:ui-tooling:$compose_version")
     implementation("androidx.compose.foundation:foundation:$compose_version")
