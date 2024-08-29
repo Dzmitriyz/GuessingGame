@@ -61,6 +61,5 @@ class ResultFragment : Fragment() {
 
     @Composable
     fun ResultFragmentContent(){
-
     }
 }
